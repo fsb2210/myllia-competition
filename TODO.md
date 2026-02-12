@@ -39,11 +39,36 @@
 
 - [x] quantile-based selection of features: avoid using the entire networks and use only those genes that show variance between perturbations
 - [ ] try *without* quantile-based features selection
+- [ ] apply feature selection based on correlation between (X, Y):
+        ```python
+        from sklearn.feature_selection import SelectKBest, f_regression
+
+        # 1. Flatten Y for selection (f_regression expects 1D target typically,
+        # but handles 2D by averaging tasks in newer sklearn versions or we just flatten)
+        # A safer bet for multi-output is to use mutual_info_regression or just flatten Y.
+        Y_flat = Y.flatten()
+
+        # 2. Initialize Selector
+        # k=1000 is a start. If still noisy, drop to 500.
+        selector = SelectKBest(score_func=f_regression, k=1000)
+
+        # 3. Fit and Transform
+        # Note: Fit on the concatenated Multi-Scale X
+        selector.fit(X, Y_flat)
+
+        X_selected = selector.transform(X)
+        X_val_selected = selector.transform(X_val)
+
+        print(f"Reduced X from {X.shape[1]} to {X_selected.shape[1]} features")
+        ```
 
 - [ ] use `StandardScaler` for `ElasticNet` models
 - [x] try different values of `n_latent`: 50, 70 -> **nothing changed**
 - [ ] use AutoEncoder instead of PCA
-- [ ] make predictions using an ensemble of models: `Ridge`, (multitask) `ElasticNet`
+
 - [x] given the small sample set use *leave-one-out* (LOO) cross-validation for a less biased estimate
+
+- [ ] make predictions for single models: `LinearRegression` (OLS), `Ridge`, `Lasso`, `ElasticNet`
+- [ ] make predictions using an ensemble of models: `Ridge`, (multitask) `ElasticNet`
 
 - [x] add visualizations for model performance: scatter plot, histogram of correlations, heatmaps
