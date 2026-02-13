@@ -9,7 +9,7 @@ This is a short report on different trained models and their results.
 - RWR: Random-walk restart
 - LOO: leave-one-out
 
-## SDiff RWR - LOO - Ridge (sdiffrwr_loo_ridge)
+## SDiff RWR - LOO - Ridge: sdiffrwr_loo_ridge (CV = 0.14, LB = -0.35)
 
 - Fix parameters: `alpha_RW = 0.85`, `score_threshold = 0.5`, `variance_percentile = 80`, `n_latent = 70`
 
