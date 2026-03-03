@@ -35,7 +35,7 @@ response = requests.get(download_url, stream=True)
 response.raise_for_status()
 
 total = int(response.headers.get("content-length", 0))
-with open(NAME, "wb") as f, tqdm(total=size, unit="B", unit_scale=True, desc="Downloading") as bar:
+with open(NAME, "wb") as f, tqdm(total=total, unit="B", unit_scale=True, desc="Downloading") as bar:
     for chunk in response.iter_content(chunk_size=8192):
         if not chunk: break
         f.write(chunk)
