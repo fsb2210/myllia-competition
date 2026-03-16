@@ -2,6 +2,7 @@
 papers/
 submissions/
 data/
+reports/figures/*
 
 # Python-generated files
 __pycache__/
