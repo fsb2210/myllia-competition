@@ -1,0 +1,35 @@
+figure.figsize: 10, 6
+figure.dpi: 150
+figure.facecolor: white
+figure.edgecolor: white
+
+# axes and background
+axes.facecolor: white
+axes.edgecolor: 0.3
+axes.linewidth: 1.2
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: True
+grid.alpha: 0.3
+grid.color: 0.9
+
+# fonts (sans-serif for web)
+font.family: sans-serif
+font.sans-serif: Arial, DejaVu Sans, Helvetica, Liberation Sans
+font.size: 14
+axes.titlesize: 18
+axes.labelsize: 15
+xtick.labelsize: 13
+ytick.labelsize: 13
+legend.fontsize: 13
+
+# lines and markers
+lines.linewidth: 2.5
+lines.markersize: 6
+
+# saving (tight crop, high-res PNG)
+savefig.facecolor: white
+savefig.transparent: False
+savefig.bbox: tight
+savefig.pad_inches: 0.1
+savefig.dpi: 300
